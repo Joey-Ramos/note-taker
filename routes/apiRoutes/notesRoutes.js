@@ -1,6 +1,15 @@
 const router = require('express').Router();
+const { notes } = require('../../data/db');
+const {
+    createNewNote,
+} = require('../../lib/notes');
 
-const { notes } = require("../../data/db");
+
+
+router.get("/notes", (req, res) => {
+    let results = notes;
+    res.json(results);
+});
 
 router.post("/notes", (req, res) => {
     req.body.id = notes.length.toString();
